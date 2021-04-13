@@ -1,0 +1,23 @@
+Swift_TransportException: Failed to authenticate on SMTP server with username "vitalijbitrix@gmail.com" using 3 possible authenticators. Authenticator LOGIN returned Expected response code 235 but got code "535", with message "535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials z10sm195732lfd.9 - gsmtp
+". Authenticator PLAIN returned Expected response code 235 but got code "535", with message "535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials z10sm195732lfd.9 - gsmtp
+". Authenticator XOAUTH2 returned Expected response code 250 but got code "535", with message "535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials z10sm195732lfd.9 - gsmtp
+". in D:\open-server\OSPanel\domains\yii2.loc\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\Esmtp\AuthHandler.php:191
+Stack trace:
+#0 D:\open-server\OSPanel\domains\yii2.loc\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\EsmtpTransport.php(371): Swift_Transport_Esmtp_AuthHandler->afterEhlo()
+#1 D:\open-server\OSPanel\domains\yii2.loc\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\AbstractSmtpTransport.php(148): Swift_Transport_EsmtpTransport->doHeloCommand()
+#2 D:\open-server\OSPanel\domains\yii2.loc\vendor\yiisoft\yii2-swiftmailer\src\Mailer.php(113): Swift_Transport_AbstractSmtpTransport->start()
+#3 D:\open-server\OSPanel\domains\yii2.loc\vendor\yiisoft\yii2-swiftmailer\src\Mailer.php(156): yii\swiftmailer\Mailer->getSwiftMailer()
+#4 D:\open-server\OSPanel\domains\yii2.loc\vendor\yiisoft\yii2\mail\BaseMailer.php(263): yii\swiftmailer\Mailer->sendMessage()
+#5 D:\open-server\OSPanel\domains\yii2.loc\vendor\yiisoft\yii2\mail\BaseMessage.php(49): yii\mail\BaseMailer->send()
+#6 D:\open-server\OSPanel\domains\yii2.loc\controllers\CartController.php(133): yii\mail\BaseMessage->send()
+#7 [internal function]: app\controllers\CartController->actionCheckout()
+#8 D:\open-server\OSPanel\domains\yii2.loc\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
+#9 D:\open-server\OSPanel\domains\yii2.loc\vendor\yiisoft\yii2\base\Controller.php(181): yii\base\InlineAction->runWithParams()
+#10 D:\open-server\OSPanel\domains\yii2.loc\vendor\yiisoft\yii2\base\Module.php(534): yii\base\Controller->runAction()
+#11 D:\open-server\OSPanel\domains\yii2.loc\vendor\yiisoft\yii2\web\Application.php(104): yii\base\Module->runAction()
+#12 D:\open-server\OSPanel\domains\yii2.loc\vendor\yiisoft\yii2\base\Application.php(392): yii\web\Application->handleRequest()
+#13 D:\open-server\OSPanel\domains\yii2.loc\web\index.php(15): yii\base\Application->run()
+#14 {main}
