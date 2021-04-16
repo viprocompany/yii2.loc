@@ -55,4 +55,18 @@ $this->params['breadcrumbs'][] = $this->title;
       </a>
     </div>
   </div>
+  <div class="col-lg-3 col-xs-6">
+    <div class="small-box bg-red">
+      <div class="inner">
+        <h3><?= $comments ?></h3></h3>
+        <p>Комментариев</p>
+      </div>
+      <div class="icon">
+        <i class="fa  fa-edit"></i>
+      </div>
+      <a href="<?= \yii\helpers\Url::to(['comment/index']);?>" class="small-box-footer">
+        Подробнее<i class="fa fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
 </div>

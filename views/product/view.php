@@ -34,6 +34,8 @@
   <?php
   //подключаем левое верхнее меню, которое находится в представлении layouts/inc/sidebar.php
   use app\models\Category;
+  use yii\bootstrap\ActiveForm;
+  use yii\helpers\ArrayHelper;
   use yii\helpers\Html; ?>
   <?= $this->render('//layouts/inc/sidebar');?>
 
@@ -93,5 +95,74 @@
     </div>
   </div>
   <div class="clearfix"></div>
+  <?php
+  //вывод комментариев к товару
+  ?>
+  <div class="comment-form" style="text-align: center; padding: 20px; margin: 20px;">
+    <h4 style="margin: 20px;">Оставьте комментарий о товаре</h4>
+    <?php $form = ActiveForm::begin([
+      'id' => 'comment-form',
+      'layout' => 'horizontal',
+      'fieldConfig' => [
+        'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
+        'labelOptions' => ['class' => 'col-lg-1 control-label'],
+      ],
+    ]) ?>
+    <p>Пользователь: <?= Yii::$app->user->identity->username;?>
+    </p>
+        <?//= $form->field($commentForm, 'author_id',['template' => '{input}'])->hiddenInput        (['value'=>Yii::$app->user->identity->id])?>
+    <?= $form->field($commentForm, 'is_admin',['template' => '{input}'])->hiddenInput
+    (['value'=>Yii::$app->user->identity->role==10 ? 1 : 0])?>
+
+    <?= $form->field($commentForm, 'parent_id')->textInput() ?>
+        <?= $form->field($commentForm, 'text')->textarea(['rows' => 7]) ?>
+    <?//= $form->field($commentForm, 'product_id',['template' => '{input}'])->hiddenInput(['value'=>$product->id]) ?>
+
+    <div class="form-group">
+      <div class="col-lg-offset-1 col-lg-11">
+        <div>
+          <?= Html::submitButton('Комментировать', ['class' => 'btn btn-primary', 'name' => 'comment-button']) ?>
+        </div>
+      </div>
+    </div>
+  </div>
+  <?php ActiveForm::end() ?>
+  </div>
+  <div class="bottom-comments" style="text-align: center; padding: 20px; margin: 20px;">
+    <h4 style="margin: 20px;">Комментарии к товару <?= $product->title;?></h4>
+    <?php
+    //разбираем объект со всеми комментариями поштучно на комментарии
+    foreach ($comments as $comment):
+      //выводим только те комментарии, котoрые принадлежат этому товару
+if ($comment->product_id == $product->id):
+  //для вывода данных об авторе комментария используем связь из ммодели класса Comment.php
+      $users = ArrayHelper::toArray($comment->user);
+    foreach ($users as $user):
+    ?>
+<p>Автор : <?= $user['username']?> <?php
+    //если у пользователяправа с ролью 10, то он админ
+      if($user['role']==10):
+        ?>
+        <p><strong>Администратор</strong></p>
+      <?php
+        endif;
+        ?>
+      </p>
+
+      <?php
+    endforeach;
+      ?>
+
+      <p>Дата : <?= $comment->created?></p>
+<p>Комментарий: <?= $comment->text?></p>
+      <hr>
+
+    <?php
+    endif;
+
+    endforeach;
+    ?>
+
+  </div>
 </div>
 <!-- //banner -->

@@ -3,8 +3,8 @@
 return [
     //    'adminEmail' => 'admin@example.com',
     //    'senderEmail' => 'noreply@example.com',
-    'adminEmail' => 'admin@mail.ru',
+    'adminEmail' => 'V...@yandex.by',
     'adminPassword' => '$2y$13$LvCdAGrBrSgrniFllqBURePfk/BFsdxWBnu7ZcmtlqB4AOXXRwnce',
-    'senderEmail' => 'admin@mail.ru',
+    'senderEmail' => 'v...@gmail.com',
     'senderName' => 'Grocery-shop',
 ];

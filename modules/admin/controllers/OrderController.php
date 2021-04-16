@@ -39,7 +39,7 @@ class OrderController extends AppAdminController
         $dataProvider = new ActiveDataProvider([
             'query' => Order::find(),
           //прописываем пагинацию для страницы, по 5 записи
-          'pagination' => ['pageSize' => 5],
+          'pagination' => ['pageSize' => 10],
           //задаем сортировку вывода записей на страницу, используем  параметр sort выбираем вывод по умолчанию для  id  с встроенной константой SORT_DESC
           'sort' => ['defaultOrder' => ['id' => SORT_DESC]],
         ]);

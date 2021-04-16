@@ -80,8 +80,8 @@ $config = [
                 'class' => 'Swift_SmtpTransport',
                 //$mailSMTP = new SendMailSmtpClass( 'vitalijbitrix@gmail.com', 'Vitalij6866486', 'ssl://smtp.gmail.com', 465, 'UTF-8' );
                 'host' => 'smtp.gmail.com',
-                'username' => 'мыло',
-                'password' => 'пароль',
+                'username' => '@gmail.com',
+                'password' => '',
                 'port' => '465',
                 'encryption' => 'ssl',
             ],
