@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'text:ntext',
             'parent_id',
             'product_id',
-            'moderation',
+            'moderate',
             'created',
             'is_admin',
         ],

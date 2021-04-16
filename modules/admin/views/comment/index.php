@@ -48,9 +48,9 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'moderation',
           //форматируем вывод moderation в заваисмости от значения параметра из БД, если статус не нулевой(1), то
           // проверено и разрешено к публикации,
-          ['attribute' => 'moderation',
+          ['attribute' => 'moderate',
             'value' => function ($data) {
-              return $data->moderation ? '<span class="text-green">ДА</span>' :
+              return $data->moderate ? '<span class="text-green">ДА</span>' :
                 '<span class="text-red">Нет</span>';
             },
             'format' => 'raw',
@@ -59,23 +59,23 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'is_admin',
           //форматируем вывод moderation в заваисмости от значения параметра из БД, если статус не нулевой(1), то
           // это пользователь с правами админа
-//          ['attribute' => 'is_admin',
-//            'value' => function ($data) {
-//              return $data->is_admin ? '<span class="text-green">ДА</span>' :
-//                '<span class="text-red">Нет</span>';
-//            },
-//            'format' => 'raw',
-//          ],
-        //смотрим роль пользователя в таблице user, если роль равна 19, то это чел с админправами
           ['attribute' => 'is_admin',
             'value' => function ($data) {
-              foreach (ArrayHelper::toArray($data->user) as $user):
-                return $user['role'] ==10 ? '<span class="text-green">ДА</span>' :
-                  '<span class="text-red">Нет</span>';
-              endforeach;
+              return $data->is_admin ? '<span class="text-green">ДА</span>' :
+                '<span class="text-red">Нет</span>';
             },
             'format' => 'raw',
           ],
+        //смотрим роль пользователя в таблице user, если роль равна 19, то это чел с админправами
+//          ['attribute' => 'is_admin',
+//            'value' => function ($data) {
+//              foreach (ArrayHelper::toArray($data->user) as $user):
+//                return $user['role'] ==10 ? '<span class="text-green">ДА</span>' :
+//                  '<span class="text-red">Нет</span>';
+//              endforeach;
+//            },
+//            'format' => 'raw',
+//          ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

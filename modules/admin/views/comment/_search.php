@@ -25,11 +25,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'product_id') ?>
 
-    <?php // echo $form->field($model, 'moderation') ?>
+    <?php  echo $form->field($model, 'moderate') ?>
 
-    <?php // echo $form->field($model, 'created') ?>
+    <?php  echo $form->field($model, 'created') ?>
 
-    <?php // echo $form->field($model, 'is_admin') ?>
+    <?php  echo $form->field($model, 'is_admin') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

@@ -16,7 +16,7 @@ public $author_id;
 public $text;
 public $parent_id;
 public $product_id;
-public $moderation;
+public $moderate;
 public $created;
 public $is_admin;
 
@@ -31,7 +31,7 @@ public  $comment;
       [['text'], 'required'],
       // email has to be a valid email address
       [['text'],'string', 'length' => [3,1000]],
-      [['author_id', 'parent_id', 'product_id','is_admin'], 'integer'],
+      [['author_id', 'parent_id', 'product_id','is_admin', 'moderate'], 'integer'],
 
     ];
   }
@@ -49,6 +49,7 @@ public  $comment;
 
 //    debug(ArrayHelper::toArray($this));
 //    die;
+  $comment->moderate = $this->moderate;
   $comment->is_admin = $this->is_admin;
     $comment->parent_id = $this->parent_id;
     $comment->product_id = $product_id;

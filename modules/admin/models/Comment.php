@@ -13,7 +13,7 @@ use Yii;
  * @property string $text
  * @property int|null $parent_id
  * @property int $product_id
- * @property int|null $moderation
+ * @property int|null $moderate
  * @property string|null $created
  * @property int|null $is_admin
  */
@@ -46,7 +46,7 @@ class Comment extends \yii\db\ActiveRecord
     {
         return [
             [['author_id', 'text', 'product_id'], 'required'],
-            [['author_id', 'parent_id', 'product_id', 'moderation', 'is_admin'], 'integer'],
+            [['author_id', 'parent_id', 'product_id', 'moderate', 'is_admin'], 'integer'],
             [['text'], 'string'],
             [['created'], 'safe'],
         ];
@@ -63,7 +63,7 @@ class Comment extends \yii\db\ActiveRecord
             'text' => 'Комментарий',
             'parent_id' => 'Родительский комментарий №',
             'product_id' => 'Товар',
-            'moderation' => 'Модерация',
+            'moderate' => 'Модерация',
             'created' => 'Создан',
             'is_admin' => 'Администратор',
         ];

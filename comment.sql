@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 16 2021 г., 12:39
+-- Время создания: Апр 16 2021 г., 13:07
 -- Версия сервера: 5.7.29
 -- Версия PHP: 7.4.14
 
@@ -33,7 +33,7 @@ CREATE TABLE `comment` (
   `text` text NOT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `product_id` int(11) NOT NULL,
-  `moderation` tinyint(1) DEFAULT NULL,
+  `moderate` tinyint(1) DEFAULT NULL,
   `created` datetime DEFAULT CURRENT_TIMESTAMP,
   `is_admin` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -42,13 +42,15 @@ CREATE TABLE `comment` (
 -- Дамп данных таблицы `comment`
 --
 
-INSERT INTO `comment` (`id`, `author_id`, `text`, `parent_id`, `product_id`, `moderation`, `created`, `is_admin`) VALUES
+INSERT INTO `comment` (`id`, `author_id`, `text`, `parent_id`, `product_id`, `moderate`, `created`, `is_admin`) VALUES
 (1, 3, '!!!!!!!!!!!!!!!!!!!!!!!!!', NULL, 3, NULL, '2021-04-15 00:00:00', NULL),
 (2, 3, '???????????????????', NULL, 2, NULL, '2021-04-15 00:00:00', NULL),
-(3, 1, '98н98', NULL, 3, 1, '2021-04-15 23:15:24', NULL),
-(4, 1, 'шшшшшшшш', NULL, 3, 1, '2021-04-15 23:16:50', NULL),
-(5, 1, 'test parent_id', 1, 5, 1, '2021-04-16 10:07:41', NULL),
-(6, 1, 'ggggg', NULL, 2, NULL, '2021-04-16 12:17:48', 1);
+(3, 1, '98н98', NULL, 3, 1, '2021-04-15 23:15:24', 1),
+(4, 1, 'шшшшшшшш', NULL, 3, 1, '2021-04-15 23:16:50', 1),
+(5, 1, 'test parent_id', 1, 5, 1, '2021-04-16 10:07:41', 1),
+(6, 1, 'ggggg', NULL, 2, NULL, '2021-04-16 12:17:48', 1),
+(7, 1, 'Лучший тестовый отзыв о товаре', NULL, 2, NULL, '2021-04-16 12:50:29', 1),
+(8, 1, 'uuuuuuuuuuuuuuuuuuuuuu', NULL, 2, 1, '2021-04-16 13:05:47', 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -70,7 +72,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT для таблицы `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

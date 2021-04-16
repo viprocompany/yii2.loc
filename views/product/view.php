@@ -114,6 +114,9 @@
     <?= $form->field($commentForm, 'is_admin',['template' => '{input}'])->hiddenInput
     (['value'=>Yii::$app->user->identity->role==10 ? 1 : 0])?>
 
+    <?= $form->field($commentForm, 'moderate',['template' => '{input}'])->hiddenInput
+    (['value'=>Yii::$app->user->identity->role==10 ? 1 : 0])?>
+
     <?= $form->field($commentForm, 'parent_id')->textInput() ?>
         <?= $form->field($commentForm, 'text')->textarea(['rows' => 7]) ?>
     <?//= $form->field($commentForm, 'product_id',['template' => '{input}'])->hiddenInput(['value'=>$product->id]) ?>

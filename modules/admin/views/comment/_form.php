@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'product_id')->textInput() ?>
 
-    <?= $form->field($model, 'moderation')->textInput() ?>
+    <?= $form->field($model, 'moderate')->textInput() ?>
 
     <?= $form->field($model, 'created')->textInput() ?>
 

@@ -17,7 +17,7 @@ class CommentSearch extends Comment
     public function rules()
     {
         return [
-            [['id', 'author_id', 'parent_id', 'product_id', 'moderation', 'is_admin'], 'integer'],
+            [['id', 'author_id', 'parent_id', 'product_id', 'moderate', 'is_admin'], 'integer'],
             [['text', 'created'], 'safe'],
         ];
     }
@@ -62,7 +62,7 @@ class CommentSearch extends Comment
             'author_id' => $this->author_id,
             'parent_id' => $this->parent_id,
             'product_id' => $this->product_id,
-            'moderation' => $this->moderation,
+            'moderate' => $this->moderate,
             'created' => $this->created,
             'is_admin' => $this->is_admin,
         ]);
