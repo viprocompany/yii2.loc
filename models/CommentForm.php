@@ -30,7 +30,7 @@ public  $comment;
       // name, email, subject and body are required
       [['text'], 'required'],
       // email has to be a valid email address
-      [['text'],'string', 'length' => [3,1000]],
+      [['text'],'string', 'length' => [3,5000]],
       [['author_id', 'parent_id', 'product_id','is_admin', 'moderate'], 'integer'],
 
     ];
@@ -38,8 +38,8 @@ public  $comment;
   public function attributeLabels()
   {
     return [
-
-      'text' => 'текст комментария',
+      'parent_id' => 'К отзыву',
+      'text' => 'Текст',
     ];
   }
 

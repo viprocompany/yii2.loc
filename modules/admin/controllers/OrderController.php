@@ -94,7 +94,7 @@ class OrderController extends AppAdminController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-          //если данные успешно сохранились то запишем в сессиюфлеш-сообщение об успешном выполнении
+          //если данные успешно сохранились то запишем в сессию флеш-сообщение об успешном выполнении
           Yii::$app->session->setFlash('success' , 'Заказ изменён успешно!');
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -113,7 +113,7 @@ class OrderController extends AppAdminController
      */
     public function actionDelete($id)
     {
-      //удаление по связи таблиц orderProduct , откуда  такое название НЕ ЗНАЮ, где его прописали
+      //удаление по связи таблиц orderProduct ,, где его прописали
 //        $this->findModel($id)->unlink('orderProduct', true);
         $this->findModel($id)->delete();
         //удаление всех продуктов в таблице order_product по их полю order_id, котрое является номером заказа и  соответсвует номеру заказа в таблице orders и передается в этот экшн как $id

@@ -40,6 +40,10 @@ class CommentController extends AppAdminController
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 //все пользователи сайта,для получения даных о пользователе в общем списке комментариев
 //      $users = User::find()->all();
+      //задаю пагинацию в соответствущем свойстве объекта $dataProvider
+      $dataProvider->pagination->pageSize = 10;
+      $dataProvider->sort = ['defaultOrder' => ['id' => SORT_DESC]];
+
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -69,6 +73,10 @@ class CommentController extends AppAdminController
     public function actionCreate()
     {
         $model = new Comment();
+        //так как добавлять комментарии может человек только с правами админа, то его комментарии публикуются без
+      // модерации ПО ДЕФОЛТУ, иначе нужно менять значения в селектах
+        $model->moderate = true;
+        $model->is_admin = true;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

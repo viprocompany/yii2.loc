@@ -45,7 +45,7 @@ public function run()
   if ($this->cache_time){
     $menu = \Yii::$app->cache->get('menu');
     if ($menu){
-      return$menu;
+      return $menu;
     }
   }
 

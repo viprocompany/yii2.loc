@@ -4,6 +4,8 @@ namespace app\modules\admin\models;
 
 use app\models\User;
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "comment".
@@ -37,8 +39,29 @@ class Comment extends \yii\db\ActiveRecord
 
   public function getProduct(){
 
-    return $this->hasMany(Product::class, ['id' => 'product_id']);
+    return $this->hasOne(Product::class, ['id' => 'product_id']);
   }
+
+
+  public function  behaviors()
+  {
+    return [
+      [
+        //указывае класс поведения к которому прикрепляем,  привязано к константе class(в документации className, но оноустарело)
+        'class' => TimestampBehavior::class,
+        'attributes' => [
+          //событие перед вставкой записи EVENT_BEFORE_INSERT срабатывает для полей 'created',  тo есть для атрибутов которые относятся к модели Comment. Происходит во время создания заказа заполнени этих полей в виде даты и времени согласно нижепрописанной переменной 'value'
+          ActiveRecord::EVENT_BEFORE_INSERT => ['created'],
+        ],
+        // По умолчанию происходит генерация метки времени UNIX, если вместо метки времени UNIX используется datetime, используем встроенную функцию NOW от MySql для получения текуущей даты и времени:
+//        'value' => new Expression('NOW()'),
+        // в письме не выводилась дата , а выводилось 'NOW()', поэтому пришлось сделать так:
+        'value' => date('Y-m-d H:i:s'),
+      ],
+    ];
+  }
+
+
     /**
      * {@inheritdoc}
      */
@@ -58,7 +81,7 @@ class Comment extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => '№ товара',
+            'id' => '№ комментария',
             'author_id' => 'Автор',
             'text' => 'Комментарий',
             'parent_id' => 'Родительский комментарий №',
