@@ -43,11 +43,12 @@ jQuery(document).ready(function($) {
         shadow: "0 0 5px #000"
     });
 
-    jQuery(document).ready(function( $ ) {
-        $('.counter').counterUp({
-            delay: 10,
-            time: 1000
-        });
+
+});
+jQuery(document).ready(function( $ ) {
+    $('.counter').counterUp({
+        delay: 10,
+        time: 1000
     });
 });
 $(window).load(function(){
@@ -57,6 +58,11 @@ $(window).load(function(){
             $('body').removeClass('loading');
         }
     });
+
+
+     $('.comment-comment').on('click', function() {
+   $('.comment-form_comment').toggleClass('hide');
+ });
 });
 
 

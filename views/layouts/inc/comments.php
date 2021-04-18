@@ -14,6 +14,13 @@ if (Yii::$app->user->identity):
     'labelOptions' => ['class' => 'col-lg-1 control-label'],
   ],
 ]) ?>
+<style>
+  .hidden{
+    display: none;
+  }
+
+
+</style>
   <div class="comment-form" style="text-align: center; padding: 20px; margin: 20px;">
     <h4 style="margin: 20px;">Оставьте отзыв о товаре</h4>
     <p>Как: <?= Yii::$app->user->identity->username; ?>
@@ -67,7 +74,9 @@ endif;
             <small> (Администратор)</small>
             </p>
           <?php
+
           endif;
+
         endforeach;
         ?>
         <p>Дата : <?= $comment->created ?></p>
@@ -79,15 +88,18 @@ endif;
 
 
       <?php $form = ActiveForm::begin([
-      'id' => 'comment-form',
+      'id' => 'comment-form-'.$comment->id,
       'layout' => 'horizontal',
       'fieldConfig' => [
         'template' => "{label}\n<div class=\"col-lg-6\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
         'labelOptions' => ['class' => 'col-lg-1 control-label'],
       ],
     ]) ?>
-      <div class="comment-form" style="text-align: center; padding: 20px; margin: 20px;">
-        <h4 style="margin: 20px;">Комментировать отзыв как: <?= Yii::$app->user->identity->username; ?></h4>
+        <a  class="comment-comment" style="cursor: pointer" id="comment-<?= $comment->id?>">Комментировать
+          как: <?= Yii::$app->user->identity->username; ?></a>
+      <div id="comment-form_comment-<?= $comment->id?>"  style="text-align: center; padding: 10px; margin: 10px;"
+            class="hide comment-form_comment">
+
 
         <? //= $form->field($commentForm, 'author_id',['template' => '{input}'])->hiddenInput        (['value'=>Yii::$app->user->identity->id])
         ?>
@@ -112,9 +124,6 @@ endif;
         </div>
       </div>
       <?php ActiveForm::end() ?>
-
-
-
   <?php
   //разбираем объект со всеми комментариями поштучно на комментарии
   foreach ($comments as $comment):
@@ -154,7 +163,10 @@ endif;
 
   ?>
       </div>
+
+
     <?php
+
      endif;
 
   endforeach;
@@ -163,3 +175,64 @@ endif;
 </div>
 
 </div>
+
+
+
+<?="<script> document.addEventListener(\"DOMContentLoaded\", function() {
+      document.getElementById('comment-" . $comment->id."').addEventListener('click', function(event){
+        if(document.getElementById('comment-form_comment-" . $comment->id."').hasAttribute('hidden')){
+		document.getElementById('comment-form_comment-" . $comment->id."').removeAttribute('hidden');
+		} if(!(document.getElementById('comment-form_comment-" . $comment->id. "').hasAttribute('hidden'))){
+			document.getElementById('comment-form_comment-" . $comment->id."').setAttribute('hidden','');
+		}
+      })});</script>";?>
+
+
+  <!--          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>-->
+<?//="<script>$(window).load(function() {
+//  $('#comment-" . $comment->id."').on('click', function() {
+//    $('#comment-form_comment-" . $comment->id."').toggleClass('hide');
+//  });
+//});</script>";?>
+
+
+<?//="<script> document.getElementById('comment-" . $comment->id."').onclick = function () {
+//	if(document.getElementById('comment-form_comment-" . $comment->id. "').attr('hidden')){
+//		document.getElementById('comment-form_comment-" . $comment->id. "').removeAttribute('hidden');
+//		}else{
+//			document.getElementById('comment-form_comment-" . $comment->id. "').setAttribute('hidden');
+//		}
+//		};</script>";?>
+<?//="<script> document.addEventListener(\"DOMContentLoaded\", function(){
+//  document.getElementById('comment-" . $comment->id."').addEventListener('click', function(e){
+//       	if(document.getElementById('comment-form_comment-" . $comment->id. "').attr('hidden')){
+//		document.getElementById('comment-form_comment-" . $comment->id. "').removeAttribute('hidden');
+//		}else{
+//			document.getElementById('comment-form_comment-" . $comment->id. "').setAttribute('hidden');
+//		}})});</script>"?>
+
+<?//="<script> document.addEventListener(\"DOMContentLoaded\", function(){
+//  document.getElementById('comment-" . $comment->id."').addEventListener('click', function(e){
+//        if(document.getElementById('comment-form_comment-" . $comment->id. "').classList.contains('hidden')){
+//		document.getElementById('comment-form_comment-" . $comment->id."').classList.remove('hidden');
+//		} if(!(document.getElementById('comment-form_comment-" . $comment->id."').classList.contains('hidden'))){
+//			document.getElementById('comment-form_comment-" . $comment->id."').classList.add('hidden');
+//		}})});</script>"?>
+
+<?php
+//$js = <<<JS
+//document.querySelector('button .comment-comment25').onclick = function () {
+//    if(document.querySelector('#comment-form .comment-form_comment').attr('hidden')){
+//document.querySelector('#comment-form .comment-form_comment').removeAttribute('hidden')}else{
+//document.querySelector('#comment-form .comment-form_comment').setAttribute('hidden');}};
+//JS;
+//скрипт подключаем как jQuery(function ($)
+//$this->registerJs($js);
+?>
+<?//="<script> document.addEventListener(\"DOMContentLoaded\", function(){
+//  document.getElementById('comment-" . $comment->id."').addEventListener('click', function(e){
+//        if(document.getElementById('comment-form_comment-" . $comment->id. "').classList.contains('hidden')){
+//		document.getElementById('comment-form_comment-" . $comment->id."').classList.remove('hidden');
+//		} if(!(document.getElementById('comment-form_comment-" . $comment->id."').classList.contains('hidden'))){
+//			document.getElementById('comment-form_comment-" . $comment->id."').classList.add('hidden');
+//		}})});</script>"?>
