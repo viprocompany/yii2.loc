@@ -18,6 +18,7 @@ class MainController extends AppAdminController
     $products = Product::find()->count();
     $categories = Category::find()->count();
     $comments = Comment::find()->count();
+    $users = User::find()->count();
 
 
     return $this->render('index',compact('orders', 'products', 'categories', 'comments', 'users'));

@@ -91,6 +91,18 @@
           <li><a href="<?= \yii\helpers\Url::to(['comment/create']) ?>">Добавить комментарий</a></li>
         </ul>
       </li>
+      <li class="treeview">
+        <a href="<?= \yii\helpers\Url::to(['user/index']) ?>"><i class="fa  fa-users"></i>
+          <span>Пользователи</span>
+          <span class="pull-right-container">
+                <i class="fa  fa-angle-left pull-right"></i>
+              </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="<?= \yii\helpers\Url::to(['user/index']) ?>">Список пользователей </a></li>
+          <li><a href="<?= \yii\helpers\Url::to(['user/create']) ?>">Добавить пользователя</a></li>
+        </ul>
+      </li>
     </ul>
     <!-- /.sidebar-menu -->
   </section>

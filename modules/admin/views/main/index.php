@@ -10,7 +10,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?php ?>
 <div class="row">
-  <?php //верстку для блоков заказо, товаров и категорий берем из AdminLTE2 шаблона на странице виджетов(копируем  html  через редактор)?>
+  <?php //верстку для блоков заказов, товаров и категорий берем из AdminLTE2 шаблона на странице виджетов(копируем
+  //  html  через редактор)?>
   <div class="col-lg-3 col-xs-6">
       <div class="small-box bg-aqua">
       <div class="inner">
@@ -65,6 +66,21 @@ $this->params['breadcrumbs'][] = $this->title;
         <i class="fa  fa-edit"></i>
       </div>
       <a href="<?= \yii\helpers\Url::to(['comment/index']);?>" class="small-box-footer">
+        Подробнее<i class="fa fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
+  <?php        //данные  о количестве из объектов $orders,$products,$categories ,$users, $comments, полученные из  главного контроллера  модуля  MianController выводим    ?>
+  <div class="col-lg-3 col-xs-6">
+    <div class="small-box bg-fuchsia">
+      <div class="inner">
+        <h3><?= $users ?></h3></h3>
+        <p>Пользователей</p>
+      </div>
+      <div class="icon">
+        <i class="fa  fa-users"></i>
+      </div>
+      <a href="<?= \yii\helpers\Url::to(['user/index']);?>" class="small-box-footer">
         Подробнее<i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>

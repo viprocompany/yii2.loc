@@ -59,10 +59,11 @@ $(window).load(function(){
         }
     });
 
-
-     $('.comment-comment').on('click', function() {
-   $('.comment-form_comment').toggleClass('hide');
- });
+//сокрытие открытие форм добавления комментариев к отзывам на товары на детальной странице товаров
+    $('.comment-comment').on('click', function () {
+        // действует на соседние элементы внутри одного родителя
+        $(this).parent().find( ".comment-form_comment" ).toggleClass('hide');
+    });
 });
 
 

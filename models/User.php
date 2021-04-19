@@ -14,7 +14,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
 //    public $accessToken;
 
 //
-//    private static $users = [
+//    private static $user = [
 //        '100' => [
 //            'id' => '100',
 //            'username' => 'admin',
@@ -116,7 +116,7 @@ public static function tableName()
     {
       return static::findOne(['username' => $username]);
 
-//        foreach (self::$users as $user) {
+//        foreach (self::$user as $user) {
 //            if (strcasecmp($user['username'], $username) === 0) {
 //                return new static($user);
 //            }

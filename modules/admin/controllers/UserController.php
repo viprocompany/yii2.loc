@@ -2,18 +2,17 @@
 
 namespace app\modules\admin\controllers;
 
-use app\models\User;
 use Yii;
-use app\modules\admin\models\Comment;
-use app\modules\admin\models\CommentSearch;
+use app\models\User;
+use app\modules\admin\models\UserSearch;
 use app\modules\admin\controllers\AppAdminController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * CommentController implements the CRUD actions for Comment model.
+ * UserController implements the CRUD actions for User model.
  */
-class CommentController extends AppAdminController
+class UserController extends AppAdminController
 {
     /**
      * {@inheritdoc}
@@ -31,29 +30,22 @@ class CommentController extends AppAdminController
     }
 
     /**
-     * Lists all Comment models.
+     * Lists all User models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CommentSearch();
+        $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-//все пользователи сайта,для получения даных о пользователе в общем списке комментариев
-//      $user = User::find()->all();
-      //задаю пагинацию в соответствущем свойстве объекта $dataProvider
-      $dataProvider->pagination->pageSize = 10;
-      $dataProvider->sort = ['defaultOrder' => ['id' => SORT_DESC]];
-
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-//            'user' => $user,
         ]);
     }
 
     /**
-     * Displays a single Comment model.
+     * Displays a single User model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -66,17 +58,13 @@ class CommentController extends AppAdminController
     }
 
     /**
-     * Creates a new Comment model.
+     * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Comment();
-        //так как добавлять комментарии может человек только с правами админа, то его комментарии публикуются без
-      // модерации ПО ДЕФОЛТУ, иначе нужно менять значения в селектах
-        $model->moderate = true;
-        $model->is_admin = true;
+        $model = new User();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -88,7 +76,7 @@ class CommentController extends AppAdminController
     }
 
     /**
-     * Updates an existing Comment model.
+     * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -108,7 +96,7 @@ class CommentController extends AppAdminController
     }
 
     /**
-     * Deletes an existing Comment model.
+     * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -122,15 +110,15 @@ class CommentController extends AppAdminController
     }
 
     /**
-     * Finds the Comment model based on its primary key value.
+     * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Comment the loaded model
+     * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Comment::findOne($id)) !== null) {
+        if (($model = User::findOne($id)) !== null) {
             return $model;
         }
 

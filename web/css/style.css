@@ -4936,3 +4936,25 @@ position: relative;
 	}
 }
 
+
+/*мои стили для сортировки товаров по количеству цене и названию в категориях товаров*/
+
+.panel_strategy .sort_form .inline .form-group  .control-label{
+	display: none;
+}.panel_strategy .sort_form .inline .form-group {
+	display: inline-block;
+}
+.inline button{
+	display: inline-block;
+	height: 100%;
+}
+ .panel_strategy{
+	 display: flex;
+	 justify-content: space-between;
+	 margin-right: 20px;
+	 margin-top: 20px;
+ }
+ .number .field-sortform-number #sortform-number{
+	 width: 60px;
+ }
+

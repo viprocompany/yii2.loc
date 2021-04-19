@@ -86,7 +86,9 @@ endif;
 
 
 
-
+<?php
+//форма для добавления комментариев к отзывам, вставляется внутри отзыва, открытие и закрытие происходит по клику  на ссылку .comment-comment ,скрипт прописан в файле main.js
+?>
       <?php $form = ActiveForm::begin([
       'id' => 'comment-form-'.$comment->id,
       'layout' => 'horizontal',
@@ -178,61 +180,13 @@ endif;
 
 
 
-<?="<script> document.addEventListener(\"DOMContentLoaded\", function() {
-      document.getElementById('comment-" . $comment->id."').addEventListener('click', function(event){
-        if(document.getElementById('comment-form_comment-" . $comment->id."').hasAttribute('hidden')){
-		document.getElementById('comment-form_comment-" . $comment->id."').removeAttribute('hidden');
-		} if(!(document.getElementById('comment-form_comment-" . $comment->id. "').hasAttribute('hidden'))){
-			document.getElementById('comment-form_comment-" . $comment->id."').setAttribute('hidden','');
-		}
-      })});</script>";?>
-
-
-  <!--          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>-->
-<?//="<script>$(window).load(function() {
-//  $('#comment-" . $comment->id."').on('click', function() {
-//    $('#comment-form_comment-" . $comment->id."').toggleClass('hide');
-//  });
-//});</script>";?>
-
-
-<?//="<script> document.getElementById('comment-" . $comment->id."').onclick = function () {
-//	if(document.getElementById('comment-form_comment-" . $comment->id. "').attr('hidden')){
-//		document.getElementById('comment-form_comment-" . $comment->id. "').removeAttribute('hidden');
-//		}else{
-//			document.getElementById('comment-form_comment-" . $comment->id. "').setAttribute('hidden');
+<?//="<script> document.addEventListener(\"DOMContentLoaded\", function() {
+//      document.getElementById('comment-" . $comment->id."').addEventListener('click', function(event){
+//        if(document.getElementById('comment-form_comment-" . $comment->id."').hasAttribute('hidden')){
+//		document.getElementById('comment-form_comment-" . $comment->id."').removeAttribute('hidden');
+//		} if(!(document.getElementById('comment-form_comment-" . $comment->id. "').hasAttribute('hidden'))){
+//			document.getElementById('comment-form_comment-" . $comment->id."').setAttribute('hidden','');
 //		}
-//		};</script>";?>
-<?//="<script> document.addEventListener(\"DOMContentLoaded\", function(){
-//  document.getElementById('comment-" . $comment->id."').addEventListener('click', function(e){
-//       	if(document.getElementById('comment-form_comment-" . $comment->id. "').attr('hidden')){
-//		document.getElementById('comment-form_comment-" . $comment->id. "').removeAttribute('hidden');
-//		}else{
-//			document.getElementById('comment-form_comment-" . $comment->id. "').setAttribute('hidden');
-//		}})});</script>"?>
+//      })});</script>";?>
 
-<?//="<script> document.addEventListener(\"DOMContentLoaded\", function(){
-//  document.getElementById('comment-" . $comment->id."').addEventListener('click', function(e){
-//        if(document.getElementById('comment-form_comment-" . $comment->id. "').classList.contains('hidden')){
-//		document.getElementById('comment-form_comment-" . $comment->id."').classList.remove('hidden');
-//		} if(!(document.getElementById('comment-form_comment-" . $comment->id."').classList.contains('hidden'))){
-//			document.getElementById('comment-form_comment-" . $comment->id."').classList.add('hidden');
-//		}})});</script>"?>
 
-<?php
-//$js = <<<JS
-//document.querySelector('button .comment-comment25').onclick = function () {
-//    if(document.querySelector('#comment-form .comment-form_comment').attr('hidden')){
-//document.querySelector('#comment-form .comment-form_comment').removeAttribute('hidden')}else{
-//document.querySelector('#comment-form .comment-form_comment').setAttribute('hidden');}};
-//JS;
-//скрипт подключаем как jQuery(function ($)
-//$this->registerJs($js);
-?>
-<?//="<script> document.addEventListener(\"DOMContentLoaded\", function(){
-//  document.getElementById('comment-" . $comment->id."').addEventListener('click', function(e){
-//        if(document.getElementById('comment-form_comment-" . $comment->id. "').classList.contains('hidden')){
-//		document.getElementById('comment-form_comment-" . $comment->id."').classList.remove('hidden');
-//		} if(!(document.getElementById('comment-form_comment-" . $comment->id."').classList.contains('hidden'))){
-//			document.getElementById('comment-form_comment-" . $comment->id."').classList.add('hidden');
-//		}})});</script>"?>
